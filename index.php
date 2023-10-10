@@ -12,6 +12,10 @@ app()->get('/', function () {
 	response()->page('./welcome.html');
 });
 
+app()->set404(function () {
+	response()->page('./404.html');
+});
+
 app()->group('/api', function(){
 	app()->group('/v1', function(){
 		app()->post('/submit', function(){

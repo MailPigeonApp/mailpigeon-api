@@ -42,7 +42,7 @@ app()->group('/api', function(){
 			}
 
 			$fields = db()
-				->select('project', 'fields')
+				->select('project', 'fields, deleted_count')
 				->find($keyDetails["projectId"]);
 
 			$decodedFields = json_decode($fields['fields'], true);
@@ -85,10 +85,18 @@ app()->group('/api', function(){
 				);
 			};
 
+			$projectCount = db()
+				->select('submission')
+				->where([
+					'"projectId"' => $keyDetails["projectId"]
+					])
+				->count();
+
 			db()
 				->insert('submission')
 				->params(
 					[
+						'increment' => $projectCount + $fields['deleted_count'] + 1,
 						'"projectId"' => $keyDetails["projectId"],
 						'"userId"' => $keyDetails["userId"],
 						"data" => json_encode($request)

@@ -47,6 +47,18 @@ app()->group('/api', function(){
 
 			$decodedFields = json_decode($fields['fields'], true);
 
+			$count = count($decodedFields);
+
+			if ($count < 1) {
+				response()->exit(
+					[
+						"message" => "No fields found for this project"
+					], 406
+				);
+			};
+
+			$decodedFields = json_decode($fields['fields'], true);
+
 			$required = [];
 			$empty = [];
 

@@ -68,7 +68,12 @@ app()->group('/api', function(){
 					$required[] = "Field '" . $field["name"] . "' is required";
 					continue;
 				}
-				if (gettype($request[$field['name']]) != $field['type']) {
+
+				if ($field['type'] == "array" && substr(json_encode($request[$field['name']]), 0, 1) != "[") {
+					$empty[] = "Field '" . $field["name"] . "' is not of type " . $field['type'];
+				}
+
+				if (gettype($request[$field['name']]) != $field['type'] && $field['type'] != "array") {
 					$empty[] = "Field '" . $field["name"] . "' is not of type " . $field['type'];
 				}
 			}

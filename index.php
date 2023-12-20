@@ -36,7 +36,16 @@ app()->group('/api', function(){
 			if (!$keyDetails) {
 				response()->exit(
 					[
-						"message" => "Invalid API key"
+						"data" => [
+							"message" => "Submission failed",
+							"error" => [
+								"message" => "Invalid API key"
+								]
+							],
+						"status" => [
+							"code" => 401,
+							"message" => "Unauthorized"
+						]
 					], 401
 				);
 			}
@@ -52,7 +61,16 @@ app()->group('/api', function(){
 			if ($count < 1) {
 				response()->exit(
 					[
-						"message" => "No fields found for this project"
+						"data" => [
+							"message" => "Submission failed",
+							"error" => [
+								"message" => "No fields found for this project"
+								]
+							],
+						"status" => [
+							"code" => 406,
+							"message" => "Unauthorized"
+						]
 					], 406
 				);
 			};
@@ -80,13 +98,31 @@ app()->group('/api', function(){
 
 			if(count($empty) > 0) {
 				response()->exit(
-					$empty, 400
+					[
+						"data" => [
+							"message" => "Submission failed",
+							"error" => $empty
+							],
+						"status" => [
+							"code" => 400,
+							"message" => "Unauthorized"
+						]
+					], 400
 				);
 			};
 
 			if(count($required) > 0) {
 				response()->exit(
-						$required, 400
+					[
+						"data" => [
+							"message" => "Submission failed",
+							"error" => $required
+							],
+						"status" => [
+							"code" => 400,
+							"message" => "Unauthorized"
+						]
+					], 400
 				);
 			};
 

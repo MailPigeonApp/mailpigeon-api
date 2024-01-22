@@ -13,7 +13,7 @@ return array(
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
     'Leaf\\Http\\' => array($vendorDir . '/leafs/cors/src', $vendorDir . '/leafs/http/src'),
     'Leaf\\Helpers\\' => array($vendorDir . '/leafs/password/src'),
-    'Leaf\\' => array($vendorDir . '/leafs/anchor/src', $vendorDir . '/leafs/auth/src', $vendorDir . '/leafs/date/src', $vendorDir . '/leafs/db/src', $vendorDir . '/leafs/exception/src', $vendorDir . '/leafs/form/src', $vendorDir . '/leafs/leaf/src', $vendorDir . '/leafs/router/src', $vendorDir . '/leafs/session/src'),
+    'Leaf\\' => array($vendorDir . '/leafs/anchor/src', $vendorDir . '/leafs/auth/src', $vendorDir . '/leafs/date/src', $vendorDir . '/leafs/db/src', $vendorDir . '/leafs/exception/src', $vendorDir . '/leafs/form/src', $vendorDir . '/leafs/leaf/src', $vendorDir . '/leafs/router/src', $vendorDir . '/leafs/session/src', $vendorDir . '/leafs/fetch/src'),
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
 );

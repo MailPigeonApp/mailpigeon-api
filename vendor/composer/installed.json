@@ -478,6 +478,67 @@
             "install-path": "../leafs/exception"
         },
         {
+            "name": "leafs/fetch",
+            "version": "v0.1",
+            "version_normalized": "0.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leafsphp/fetch.git",
+                "reference": "f214dda6131c830ed19310dfdfd57a244f5bbd08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leafsphp/fetch/zipball/f214dda6131c830ed19310dfdfd57a244f5bbd08",
+                "reference": "f214dda6131c830ed19310dfdfd57a244f5bbd08",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "time": "2021-06-04T17:47:10+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Leaf\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Darko",
+                    "email": "mickdd22@gmail.com",
+                    "homepage": "https://mychi.netlify.app",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Plain simple PHP http client",
+            "homepage": "https://github.com/leafsphp/redis",
+            "keywords": [
+                "client",
+                "fetch",
+                "http",
+                "leaf",
+                "network",
+                "php",
+                "xhr"
+            ],
+            "support": {
+                "issues": "https://github.com/leafsphp/fetch/issues",
+                "source": "https://github.com/leafsphp/fetch/tree/v0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/leaf",
+                    "type": "open_collective"
+                }
+            ],
+            "install-path": "../leafs/fetch"
+        },
+        {
             "name": "leafs/form",
             "version": "v2.0",
             "version_normalized": "2.0.0.0",

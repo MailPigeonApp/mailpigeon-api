@@ -88,6 +88,7 @@ class ComposerStaticInit33b7aef7072b9bd892df640e7d24833d
             6 => __DIR__ . '/..' . '/leafs/leaf/src',
             7 => __DIR__ . '/..' . '/leafs/router/src',
             8 => __DIR__ . '/..' . '/leafs/session/src',
+            9 => __DIR__ . '/..' . '/leafs/fetch/src',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (

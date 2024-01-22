@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '444084e6fb83c53bead810528a7a346d8f28b7ea',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '444084e6fb83c53bead810528a7a346d8f28b7ea',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -79,6 +79,15 @@
             'reference' => '313a11331b214d7f6d0b566de70e274f9faa9f27',
             'type' => 'library',
             'install_path' => __DIR__ . '/../leafs/exception',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'leafs/fetch' => array(
+            'pretty_version' => 'v0.1',
+            'version' => '0.1.0.0',
+            'reference' => 'f214dda6131c830ed19310dfdfd57a244f5bbd08',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../leafs/fetch',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

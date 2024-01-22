@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97022e9c81c8055fe8cf6b12a0c99c2e",
+    "content-hash": "6ec77abb14f7124c6cdb00e189d44368",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -461,6 +461,64 @@
                 }
             ],
             "time": "2023-08-13T18:32:47+00:00"
+        },
+        {
+            "name": "leafs/fetch",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leafsphp/fetch.git",
+                "reference": "f214dda6131c830ed19310dfdfd57a244f5bbd08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leafsphp/fetch/zipball/f214dda6131c830ed19310dfdfd57a244f5bbd08",
+                "reference": "f214dda6131c830ed19310dfdfd57a244f5bbd08",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Leaf\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Darko",
+                    "email": "mickdd22@gmail.com",
+                    "homepage": "https://mychi.netlify.app",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Plain simple PHP http client",
+            "homepage": "https://github.com/leafsphp/redis",
+            "keywords": [
+                "client",
+                "fetch",
+                "http",
+                "leaf",
+                "network",
+                "php",
+                "xhr"
+            ],
+            "support": {
+                "issues": "https://github.com/leafsphp/fetch/issues",
+                "source": "https://github.com/leafsphp/fetch/tree/v0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/leaf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2021-06-04T17:47:10+00:00"
         },
         {
             "name": "leafs/form",
@@ -1321,5 +1379,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

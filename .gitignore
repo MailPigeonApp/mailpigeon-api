@@ -1,1 +1,14 @@
-/.env
+vendor
+composer.lock
+.env
+.env.example
+.env.testing
+.env.staging
+.env.production
+.env.local
+node_modules
+build
+dist
+compiled
+.idea
+Auth2

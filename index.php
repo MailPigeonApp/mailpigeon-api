@@ -5,6 +5,10 @@ require __DIR__ . '/config/index.php';
 
 use Leaf\Helpers\Authentication;
 use Leaf\Fetch;
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+
+
 
 app()->cors();
 
@@ -92,7 +96,7 @@ app()->group('/api', function(){
 					$empty[] = "Field '" . $field["name"] . "' is not of type " . $field['type'];
 				}
 
-				if (gettype($request[$field['name']]) != $field['type'] && $field['type'] != "array") {
+				if (gettype($request[$field['name']]) != $field['type'] && $field['type'] != "array" && $field['type'] != "file") {
 					$empty[] = "Field '" . $field["name"] . "' is not of type " . $field['type'];
 				}
 			}
@@ -203,8 +207,123 @@ app()->group('/api', function(){
 
 				};
 			};
+	
+	
+		});
+
+		app()->post('/upload', function(){
+			$request = request()->get(['file']);
+			$bearer = Leaf\Http\Headers::get("Authorization");
+			$key = substr($bearer, 7);
+
+			if (!$key) {
+				response()->exit(
+					[
+						"data" => [
+							"message" => "Upload failed",
+							"error" => [
+								"message" => "Invalid API key"
+								]
+							],
+						"status" => [
+							"code" => 401,
+							"message" => "Unauthorized"
+						]
+					], 401
+				);
+			}
+
+			// get project fields from db
+
+			$keyDetails = db()
+				->select('apikey')
+				->find($key);
+
+			if (!$keyDetails) {
+				response()->exit(
+					[
+						"data" => [
+							"message" => "Upload failed",
+							"error" => [
+								"message" => "Project not found"
+								]
+							],
+						"status" => [
+							"code" => 404,
+							"message" => "Not Found"
+						]
+					], 404
+				);
+			}
+
+			$fields = db()
+				->select('project', 'fields')
+				->find($keyDetails["projectId"]);
+
+			$decodedFields = json_decode($fields['fields'], true);
+
+			// check if any fields' type is file
+			$fileField = false;
+
+			foreach ($decodedFields as $field) {
+				if ($field['type'] == "file") {
+					$fileField = true;
+					break;
+				}
+			}
+
+			if (!$fileField) {
+				response()->exit(
+					[
+						"data" => [
+							"message" => "Upload failed",
+							"error" => [
+								"message" => "No file field found for this project"
+								]
+							],
+						"status" => [
+							"code" => 406,
+							"message" => "Not Acceptable"
+						]
+					], 406
+				);
+			}
+			
+			// TODO: create lock for file upload to prevent multiple uploads and 
+			// associate file type with submission
+			$sdk = new Aws\Sdk([
+				'region'   => 'us-east-1',
+				'version'  => 'latest',
+				'credentials' => [
+					'key'    => $_SERVER['AWS_ACCESS_KEY_ID'],
+					'secret' => $_SERVER['AWS_SECRET'],
+				]
+			]);
+		
+			$s3Client = $sdk->createS3();
+		
+			$result = $s3Client->putObject([
+				'Bucket' => $_SERVER['AWS_S3_BUCKET'],
+				'ACL'  => 'public-read',
+				'Key' => $request['file']['name'], 
+				'Body' => fopen($request['file']['tmp_name'], 'rb'),
+			]);
+		
+			$url = $result->get('ObjectURL');
+		
+			if(!$url){
+				response()->exit($result, 500, false);
+			}
+		
+			response()->json([
+				'url' => $result->get('ObjectURL')
+			]);
+		});
+
+		app()->post('/submitWithFile', function(){
+			response()->json("Not implemented", 501);
+		});
 	});
-});
 });
 
 app()->run();
